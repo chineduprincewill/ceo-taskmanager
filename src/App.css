@@ -14,14 +14,21 @@
 }
 
 .App-header {
-  background-color: #282c34;
+  background: linear-gradient(rgba(0, 7, 4, 0.9),  rgba(0, 7, 4, 0.9), rgba(0, 7, 4, 0.9)), url("./images/bg.jpg");
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
   color: white;
+}
+
+.Home-caption {
+  font-size: 70px;
+}
+
+.borderless tr, .borderless td, .borderless th {
+  border: none !important;
 }
 
 .App-link {
