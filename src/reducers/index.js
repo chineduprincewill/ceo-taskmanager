@@ -6,6 +6,7 @@ import tasks from './tasks';
 import schedules from './schedules';
 import stocks from './stocks';
 import dispatches from './dispatches';
+import products from './products';
 
 export default combineReducers({
     users,
@@ -14,5 +15,6 @@ export default combineReducers({
     tasks,
     schedules,
     stocks,
-    dispatches
+    dispatches,
+    products
 });

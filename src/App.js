@@ -27,6 +27,9 @@ import AddStock from './components/protected/admin/AddStock';
 import Stocks from './components/protected/admin/Stocks';
 import DispatchItem from './components/protected/admin/DispatchItem';
 import DispatchList from './components/protected/admin/DispatchList';
+import Products from './components/protected/admin/Products';
+import AddProduct from './components/protected/admin/AddProduct';
+import EditProduct from './components/protected/admin/EditProduct';
 
 
 const store = configureStore()
@@ -56,6 +59,9 @@ function App() {
               <PrivateRoute path="/stocks" component={Stocks} />
               <PrivateRoute path="/dispatch-item" component={DispatchItem} />
               <PrivateRoute path="/dispatch-list" component={DispatchList} />
+              <PrivateRoute path="/products" component={Products} />
+              <PrivateRoute path="/addproduct" component={AddProduct} />
+              <PrivateRoute path="/editProduct" component={EditProduct} />
           </Switch>
       </Router>
     </Provider>

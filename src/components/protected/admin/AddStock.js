@@ -5,6 +5,7 @@ import PropTypes from 'prop-types';
 
 import { logout } from '../../../actions/auth';
 import { addStock } from '../../../actions/stocks';
+import { fetchAllProducts } from '../../../actions/products';
 
 import { Form } from 'react-bootstrap';
 
@@ -23,7 +24,16 @@ class AddStock extends Component {
     static propTypes = {
         user: PropTypes.object,
         logout: PropTypes.func,
-        addStock: PropTypes.func
+        addStock: PropTypes.func,
+        fetchAllProducts: PropTypes.func,
+        products: PropTypes.array
+    }
+
+
+    componentDidMount(){
+
+        this.props.fetchAllProducts();
+
     }
 
     toTimeStamp = (strDate) => {
@@ -61,7 +71,7 @@ class AddStock extends Component {
 
   render() {
     
-    const { user } = this.props;
+    const { user, products } = this.props;
 
     if(user.role !== 'admin'){
         this.props.logout();
@@ -69,6 +79,17 @@ class AddStock extends Component {
 
     const { item, batch, total, received, dispatched, balance, others } = this.state;
 
+    let productList;
+
+    const data = Array.from(products);
+
+    if(products){
+        productList = data.map((prdt) => {
+            return (                     
+                <option key={ prdt._id} value={ prdt.name }>{ prdt.name }</option>      
+            )}
+        )
+    }
 
     return (
       <div className="container">
@@ -91,15 +112,17 @@ class AddStock extends Component {
                     </p>
                     <form onSubmit={this.onSubmit} className="mt-3">
                         <div className="form-group">
-                            <input 
-                                type="text"
+                            <select 
                                 name="item" 
-                                placeholder="Enter item name"
+                                placeholder="Select item"
                                 className="form-control" 
                                 onChange={this.handleChange} 
                                 value={item}
                                 required
-                            />
+                            >
+                                <option value="">select item</option>
+                                {productList}
+                            </select>
                         </div>
                         
                         <div className="form-group mt-4">
@@ -185,7 +208,8 @@ class AddStock extends Component {
 }
 
 const mapStateToProps = state => ({
-    user: state.auth.user
+    user: state.auth.user,
+    products: state.products.products
 });
 
-export default connect(mapStateToProps, { logout, addStock })(AddStock);
+export default connect(mapStateToProps, { logout, addStock, fetchAllProducts })(AddStock);

@@ -35,6 +35,12 @@ export default function Admin() {
                     <p>Stock</p>
                 </Link>
             </div>
+            <div className="col-lg-3 col-md-4 col-sm-11 col-xs-11 p-3 border-bottom">
+                <Link to="/products">
+                    <i className="fa fa-shopping-cart fa-3x mr-2"></i>
+                    <p>Product</p>
+                </Link>
+            </div>
         </div>
 
         <h5 className="p-3 mt-5 text-success border-bottom">
