@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 import { logout } from '../../actions/auth';
 
 class Roles extends Component {
@@ -11,13 +11,22 @@ class Roles extends Component {
         logout: PropTypes.func
     }
 
+    logout = () => {
+
+      this.props.logout();
+      
+      this.props.history.push('/login');
+
+    }
+
+
     render() {
 
         const { user } = this.props;
 
         let userRole;
 
-        if(user.role === 'admin'){
+        if(user.role === 'admin' || user.role === 'stock'){
             userRole = <>
                 <Link to="/locations" className="dropdown-item text-light mt-2">
                   <i className="fa fa-home mr-2"></i>  Locations
@@ -33,6 +42,9 @@ class Roles extends Component {
                 </Link>
                 <Link to="/stocks" className="dropdown-item text-light mt-2">
                   <i className="fa fa-home mr-2"></i>  Stock
+                </Link>
+                <Link to="/products" className="dropdown-item text-light mt-2">
+                  <i className="fa fa-shopping-cart mr-2"></i>  Product
                 </Link>
             </>
 
@@ -67,7 +79,7 @@ class Roles extends Component {
                   <button className="btn btn-success btn-block border-bottom">{user.role}</button>
                   {userRole}
                   <span
-                    onClick={this.props.logout}
+                    onClick={this.logout}
                     className="dropdown-item text-light mt-2"
                   >
                     <i className="fa fa-power-off mr-2"></i> sign out
@@ -90,4 +102,4 @@ const mapStateToProps = state => ({
     user: state.auth.user
 });
 
-export default connect(mapStateToProps, { logout })(Roles);
+export default connect(mapStateToProps, { logout })(withRouter(Roles));

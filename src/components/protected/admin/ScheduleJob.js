@@ -70,15 +70,7 @@ export class ScheduleJob extends Component {
 
   render() {
 
-    const { user } = this.props;
-
     const { description, location, from, to } = this.state;
-
-    if(user.role !== 'admin'){
-            
-        this.props.logout();
-    }
-
 
     return (
 
@@ -89,7 +81,7 @@ export class ScheduleJob extends Component {
             </h4>
 
             <div className="row pr-3 mt-3">
-                <Link to='/locations' className="btn btn-success text-light rounded-0 ml-auto">
+                <Link to='/schedules' className="btn btn-success text-light rounded-0 ml-auto">
                     <i className="fa fa-arrow-right mr-1"></i> Schedules
                 </Link>
             </div>

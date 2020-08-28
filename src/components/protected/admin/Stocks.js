@@ -46,14 +46,9 @@ class Stocks extends Component {
 
   render() {
 
-    const { user, stocks } = this.props;
+    const { stocks } = this.props;
 
     let stocksList;
-
-    if(user.role !== 'admin'){
-            
-        this.props.logout();
-    }
 
     if(stocks){
         const data = Array.from(stocks);

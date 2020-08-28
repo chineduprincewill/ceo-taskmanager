@@ -6,6 +6,8 @@ import './App.css';
 import configureStore from './configureStore';
 
 import PrivateRoute from './components/protected/PrivateRoute';
+import AdminRoute from './components/protected/AdminRoute';
+import StockRoute from './components/protected/StockRoute';
 import Header from './components/common/Header';
 
 import Home from './components/Home';
@@ -30,6 +32,7 @@ import DispatchList from './components/protected/admin/DispatchList';
 import Products from './components/protected/admin/Products';
 import AddProduct from './components/protected/admin/AddProduct';
 import EditProduct from './components/protected/admin/EditProduct';
+import Error from './components/protected/Error';
 
 
 const store = configureStore()
@@ -44,24 +47,25 @@ function App() {
               <Route exact path="/" component={Home} />
               <Route exact path="/register" component={Register} />
               <Route exact path="/login" component={Login} />
+              <Route exact path="/error" component={Error} />
               <PrivateRoute path="/dashboard" component={Dashboard} />
               <PrivateRoute path="/users" component={Users} />
               <PrivateRoute path="/locations" component={Locations} />
               <PrivateRoute path="/tasks" component={Tasks} />
               <PrivateRoute path="/schedules" component={Schedules} />
-              <PrivateRoute path="/edituser" component={EditUser} />
-              <PrivateRoute path="/addlocation" component={AddLocation} />
-              <PrivateRoute path="/editlocation" component={EditLocation} />
-              <PrivateRoute path="/addtask" component={AddTask} />
-              <PrivateRoute path="/edittask" component={EditTask} />
-              <PrivateRoute path="/schedule-job" component={ScheduleJob} />
-              <PrivateRoute path="/add-stock" component={AddStock} />
+              <AdminRoute path="/edituser" component={EditUser} />
+              <StockRoute path="/addlocation" component={AddLocation} />
+              <StockRoute path="/editlocation" component={EditLocation} />
+              <AdminRoute path="/addtask" component={AddTask} />
+              <AdminRoute path="/edittask" component={EditTask} />
+              <AdminRoute path="/schedule-job" component={ScheduleJob} />
+              <StockRoute path="/add-stock" component={AddStock} />
               <PrivateRoute path="/stocks" component={Stocks} />
-              <PrivateRoute path="/dispatch-item" component={DispatchItem} />
+              <StockRoute path="/dispatch-item" component={DispatchItem} />
               <PrivateRoute path="/dispatch-list" component={DispatchList} />
               <PrivateRoute path="/products" component={Products} />
-              <PrivateRoute path="/addproduct" component={AddProduct} />
-              <PrivateRoute path="/editProduct" component={EditProduct} />
+              <StockRoute path="/addproduct" component={AddProduct} />
+              <StockRoute path="/editProduct" component={EditProduct} />
           </Switch>
       </Router>
     </Provider>

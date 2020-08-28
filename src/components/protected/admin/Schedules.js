@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 
 import { getSchedulesAll } from '../../../actions/schedule';
 import { logout } from '../../../actions/auth';
@@ -22,15 +23,9 @@ class Schedules extends Component {
 
   render() {
 
-    const { user, schedules } = this.props;
+    const { schedules } = this.props;
 
     let schedulesList;
-
-    if(user.role !== 'admin'){
-            
-        this.props.logout();
-    }
-
 
     if(schedules){
         const data = Array.from(schedules);
@@ -65,9 +60,9 @@ class Schedules extends Component {
             </h4>
 
             <div className="row pr-3 mt-3">
-                <button className="btn btn-link text-success rounded-0 ml-auto">
+                <Link to="/schedule-job" className="btn btn-link text-success rounded-0 ml-auto">
                     <i className="fa fa-plus mr-1"></i> Schedule
-                </button>
+                </Link>
             </div>
 
             <div className="row p-3 mt-3">

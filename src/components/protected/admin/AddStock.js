@@ -71,11 +71,7 @@ class AddStock extends Component {
 
   render() {
     
-    const { user, products } = this.props;
-
-    if(user.role !== 'admin'){
-        this.props.logout();
-    }
+    const { products } = this.props;
 
     const { item, batch, total, received, dispatched, balance, others } = this.state;
 

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { withRouter, Redirect, Link } from 'react-router-dom';
+import { withRouter, Link } from 'react-router-dom';
 
 import { fetchAllProducts, getProduct, deleteProduct } from '../../../actions/products';
 
@@ -32,11 +32,7 @@ class Products extends Component {
 
   render() {
 
-    const { user, products } = this.props;
-
-    if(user.role !== 'admin'){
-        return <Redirect to="/login" />
-    }
+    const { products } = this.props;
 
     let productsList;
 

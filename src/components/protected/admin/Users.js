@@ -35,13 +35,9 @@ class Users extends Component {
 
   render() {
 
-    const { user, users } = this.props;
+    const { users } = this.props;
 
     let usersList;
-
-    if(user.role !== 'admin'){
-        this.props.logout();
-    }
 
     if(users){
         const data = Array.from(users);

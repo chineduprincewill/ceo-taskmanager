@@ -35,15 +35,8 @@ export class DispatchList extends Component {
 
 
     render(){
-
-        const { user } = this.props;
-
+        
         const { dispatchArr } = this.state;
-
-        if(user.role !== 'admin'){
-                
-            this.props.logout();
-        }
 
         let dispatchList;
 

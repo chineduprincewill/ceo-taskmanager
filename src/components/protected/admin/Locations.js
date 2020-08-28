@@ -45,14 +45,9 @@ class Locations extends Component {
 
   render() {
 
-    const { user, locations } = this.props;
+    const { locations } = this.props;
 
     let locationsList;
-
-    if(user.role !== 'admin'){
-            
-        this.props.logout();
-    }
 
     if(locations){
         const data = Array.from(locations);

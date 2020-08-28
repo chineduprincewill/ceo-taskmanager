@@ -125,18 +125,13 @@ export class DispatchItem extends Component {
 
   render() {
 
-    const { user, users, locations } = this.props;
+    const { users, locations } = this.props;
 
     if(this.state.isAdded){
         return <Redirect to="/stocks" />
     }
 
     const { item, batch, qtyout, staff, dispatchdate, location } = this.state;
-
-    if(user.role !== 'admin'){
-            
-        this.props.logout();
-    }
 
     let locationsList;
     let usersList;

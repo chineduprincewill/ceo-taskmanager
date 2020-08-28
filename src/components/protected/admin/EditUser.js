@@ -156,6 +156,7 @@ class EditUser extends Component {
                                 <option value={role}>{role}</option>
                                 <option value="admin">admin</option>
                                 <option value="staff">staff</option>
+                                <option value="stock">stock</option>
                             </select>
                         </div>
 

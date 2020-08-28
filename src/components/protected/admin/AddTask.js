@@ -44,11 +44,7 @@ class AddTask extends Component {
 
   render() {
     
-    const { user, isAdded } = this.props;
-
-    if(user.role !== 'admin'){
-        this.props.logout();
-    }
+    const { isAdded } = this.props;
 
     if(isAdded){
         return <Redirect to="/tasks" />

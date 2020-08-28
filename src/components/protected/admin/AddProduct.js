@@ -52,12 +52,6 @@ class AddProduct extends Component {
 
 
   render() {
-    
-    const { user } = this.props;
-
-    if(user.role !== 'admin'){
-        this.props.logout();
-    }
 
     if(this.state.isAdded){
         return <Redirect to="/products" />

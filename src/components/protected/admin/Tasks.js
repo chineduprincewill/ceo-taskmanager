@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { withRouter, Redirect, Link } from 'react-router-dom';
+import { withRouter, Link } from 'react-router-dom';
 
 import { fetchAllTasks, getTask, deleteTask } from '../../../actions/tasks';
 
@@ -32,11 +32,7 @@ class Tasks extends Component {
 
   render() {
 
-    const { user, tasks } = this.props;
-
-    if(user.role !== 'admin'){
-        return <Redirect to="/login" />
-    }
+    const { tasks } = this.props;
 
     let tasksList;
 

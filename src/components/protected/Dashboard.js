@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
 import Admin from '../protected/admin/Admin';
+import Stock from '../protected/admin/Stock';
 
 
 class Dashboard extends Component {
@@ -18,6 +19,9 @@ class Dashboard extends Component {
 
     if(this.props.user.role === 'admin'){
         roleDashboard = <Admin />;
+    }
+    else if(this.props.user.role === 'stock'){
+        roleDashboard = <Stock />;
     }
     else{
         roleDashboard = "";
